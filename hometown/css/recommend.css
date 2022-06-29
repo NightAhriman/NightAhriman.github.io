@@ -1,0 +1,370 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    overflow: hidden;
+    /* 背景动画设置 */
+    background-image: linear-gradient(125deg,#a18cd1,#fbc2eb,#fad0c4,#ff9a9e,#ff9a9e,#ffd1ff);
+    background-size: 400%;
+    animation: bganimation 15s infinite;
+}
+
+@keyframes bganimation{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
+
+/* 布局样式设置 */
+.container {
+    display: grid; 
+    grid-auto-columns: 1fr;
+    /* 盒子大小  */
+    grid-template-columns: 100%; 
+    grid-template-rows: 60px 660px 43px; 
+    /* 盒子名 */
+    grid-template-areas: 
+      "header"
+      "page"
+      "footer"; 
+}
+
+
+/* 头部导航栏设置 */
+.logo img{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    margin-top: -20px;
+}
+
+
+.header {
+    grid-area: header; 
+    top: 0;
+    background-color: rgba(103, 147, 223, .9);
+    /* 阴影 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+    z-index: 99;
+}
+
+.header .nav{
+    width: 1200px;
+    height: 100%;
+    /* 元素水平居中 */
+    margin: 0 auto;
+}
+
+.header li{
+    /* 清除li元素前面的项目符号 */
+    list-style: none;
+}
+
+.header a{
+    text-decoration: none;
+    color: #000;
+}
+
+.header .nav ul{
+    position: relative;
+    /* 弹性布局 */
+    display: flex;
+    /* 子元素平均分配宽度 */
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.header .nav ul>li{
+    width: 100%;
+    height: 100%;
+}
+
+.header .nav ul>li>a{
+    /* a元素由行内元素转变为块元素 */
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+}
+
+.header .nav ul>li ol{
+    width: 100%;
+    background-color: rgba(103, 147, 223, .9);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
+    /* 隐藏二级菜单 */
+    transform: scaleY(0);
+    /* 设置过渡动画 */
+    transition: all .2s;
+    transform-origin: 50% 0%;
+}
+
+.header .nav ul>li ol li{
+    height: 50px;
+    border-bottom: 2px solid rgb(82, 115, 171);
+}
+
+.header .nav ul>li ol li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+}
+
+.header .nav ul>li ol li:hover{
+    background-color: rgba(211, 182, 182, .3);
+}
+
+.header .nav ul>li:hover ol{
+    transform: scaleY(1);
+}
+/* 设置线条 */
+.header .nav ul .underline{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 240px;
+    height: 6px;
+    opacity: 0;
+    /* 设置盒子左上角和右上角的圆角 */
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: #cc3333;
+    /* 过渡动画 */
+    transition: all .3s;
+    /* 设置鼠标移入li时，不影响动画 */
+    pointer-events: none;
+}
+
+.header .nav ul .underline::before{
+    content: "";
+    position: absolute;
+    top: -9.5px;
+    /* calc方法自动计算数值，实现盒子居中 */
+    left: calc(50% - 9px);
+    width: 18px;
+    height: 10px;
+    /* inherit继承父元素的属性值 */
+    background-color: inherit;
+    /* 绘制三角形图案，polygon属性只需提供最少三个点，就可以将三点连线，绘制图案。
+    坐标位置（x，y）0 100% ，x轴上为0px，y轴上为100% */
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+
+.header .nav ul>li:first-child:hover~.underline{
+    opacity: 1;
+}
+
+.header .nav ul>li:nth-child(2):hover~.underline{
+    left: 240px;
+    background-color: #ff9933;
+    opacity: 1;
+}
+
+.header .nav ul>li:nth-child(3):hover~.underline{
+    left: 480px;
+    background-color: #339933;
+    opacity: 1;
+}
+
+.header .nav ul>li:nth-child(4):hover~.underline{
+    left: 720px;
+    background-color: #cc1495;
+    opacity: 1;
+}
+
+.header .nav ul>li:nth-child(5):hover~.underline{
+    left: 960px;
+    background-color: #5b3086;
+    opacity: 1;
+}
+
+
+
+
+/* 页面 */
+.page {
+    grid-area: page;
+    display: grid;
+    grid-template-columns: 400px 1110px;
+    grid-template-rows: 250px 390px;
+    gap: 3px 3px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "introduce picture"
+      "introduce life";
+      margin: auto;
+}
+  
+.introduce { 
+    grid-area: introduce; 
+    overflow: hidden;
+    background-color: rgba(225, 225, 225, .5);
+    border-radius: 5px;
+}
+.introduce .text{
+    float: inline-end;
+    font-size: 20px;
+    margin: 5px;
+}
+  
+.picture { 
+    grid-area: picture; 
+    border-radius: 5px;
+    background-size: cover;
+    background-image: url(../img/shantou.jpg);
+}
+  
+.life { 
+    grid-area: life; 
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    background-color: rgba(225, 225, 225, .5);
+    border-radius: 5px;
+}
+
+.card{
+    position: relative;
+    width: 240px;
+    height: 350px;
+    margin: 10px;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    color: #f5f5f5;
+    /* 阴影 */
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1),
+    0 2px 2px rgba(0,0,0,0.1),
+    0 4px 4px rgba(0,0,0,0.1),
+    0 8px 8px rgba(0,0,0,0.1),
+    0 16px 16px rgba(0,0,0,0.1);
+    /* 溢出隐藏 */
+    overflow: hidden;
+}
+.card::before{
+    content: "";
+    width: 100%;
+    height: 110%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 0 0;
+    /* 过渡效果: css属性名 时长 贝塞尔曲线 */
+    transition: transform 1s cubic-bezier(0.19,1,0.22,1);
+}
+/* 分别设置图片 */
+.card:nth-child(1)::before{
+    background-image: url(../img/clothes.png);
+}
+.card:nth-child(2)::before{
+    background-image: url(../img/food.png);
+}
+.card:nth-child(3)::before{
+    background-image: url(../img/reside.png);
+}
+.card:nth-child(4)::before{
+    background-image: url(../img/walk.png);
+}
+/* 遮罩 */
+.card::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 200%;
+    background: linear-gradient(to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.25) 55%,
+    rgba(0,0,0,0.8) 100%);
+    /* 绝对定位 */
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(0);
+    /* 过渡效果 */
+    transition: transform 1.4s cubic-bezier(0.19,1,0.22,1);
+}
+.card .content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 16px 8px;
+    transform: translateY(76%);
+    transition: transform 0.7s cubic-bezier(0.19,1,0.22,1);
+}
+.card h2{
+    font-size: 23px;
+    font-weight: bold;
+}
+.card p{
+    font-size: 15px;
+    /* 字间距 */
+    letter-spacing: 2px;
+    width: 80%;
+    line-height: 30px;
+    margin-top: 25px;
+    /* 文本两端对齐 */
+    text-align: justify;
+}
+
+.card .content *:not(h2){
+    /* .content下，除了h2，其他元素隐藏并下移20px */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.7s cubic-bezier(0.19,1,0.22,1),opacity 0.7s cubic-bezier(0.19,1,0.22,1);
+}
+.card:hover{
+    align-items: center;
+}
+.card:hover::before{
+    transform: translateY(-5%);
+}
+.card:hover::after{
+    transform: translateY(-50%);
+}
+.card:hover .content{
+    transform: translateY(0);
+}
+.card:hover .content *:not(h2){
+    opacity: 1;
+    transform: translateY(0);
+    /* 过渡效果延迟 */
+    transition-delay: 0.1s;
+}
+  
+
+
+
+/* 页脚 */
+.footer { 
+    grid-area: footer; 
+    background-color: rgba(103, 147, 223, .9);
+    font-size: 4px;
+    color: #000;
+}
+
+.footer .Copyright{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+    /* 规定行间距 */
+    grid-row-gap: 4px;
+    /* 设置盒子居中 */
+    place-items: center center;
+    z-index: 99;
+}
