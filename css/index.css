@@ -1,0 +1,668 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(242, 168, 168);
+    overflow: hidden;
+}
+
+/* 布局样式设置 */
+.container {
+    display: grid; 
+    grid-auto-columns: 1fr;
+    /* 盒子大小  */
+    grid-template-columns: 100%; 
+    grid-template-rows: 60px 660px 43px; 
+    /* 盒子名 */
+    grid-template-areas: 
+      "header"
+      "page"
+      "footer"; 
+}
+
+
+/* 头部导航栏设置 */
+.logo img{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    margin-top: -20px;
+}
+
+.header {
+    grid-area: header; 
+    top: 0;
+    background-color: rgba(103, 147, 223, .9);
+    /* 阴影 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+    z-index: 99;
+}
+
+.header .nav{
+    width: 1200px;
+    height: 100%;
+    /* 元素水平居中 */
+    margin: 0 auto;
+}
+
+.header li{
+    /* 清除li元素前面的项目符号 */
+    list-style: none;
+}
+
+.header a{
+    text-decoration: none;
+    color: #000;
+}
+
+.header .nav ul{
+    position: relative;
+    /* 弹性布局 */
+    display: flex;
+    /* 子元素平均分配宽度 */
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.header .nav ul>li{
+    width: 100%;
+    height: 100%;
+}
+
+.header .nav ul>li>a{
+    /* a元素由行内元素转变为块元素 */
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+}
+
+.header .nav ul>li ol{
+    width: 100%;
+    background-color: rgba(103, 147, 223, .9);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
+    /* 隐藏二级菜单 */
+    transform: scaleY(0);
+    /* 设置过渡动画 */
+    transition: all .2s;
+    transform-origin: 50% 0%;
+}
+
+.header .nav ul>li ol li{
+    height: 50px;
+    border-bottom: 2px solid rgb(82, 115, 171);
+}
+
+.header .nav ul>li ol li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+}
+
+.header .nav ul>li ol li:hover{
+    background-color: rgba(211, 182, 182, .3);
+}
+
+.header .nav ul>li:hover ol{
+    transform: scaleY(1);
+}
+/* 设置线条 */
+.header .nav ul .underline{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 240px;
+    height: 6px;
+    opacity: 0;
+    /* 设置盒子左上角和右上角的圆角 */
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background-color: #cc3333;
+    /* 过渡动画 */
+    transition: all .3s;
+    /* 设置鼠标移入li时，不影响动画 */
+    pointer-events: none;
+}
+
+.header .nav ul .underline::before{
+    content: "";
+    position: absolute;
+    top: -9.5px;
+    /* calc方法自动计算数值，实现盒子居中 */
+    left: calc(50% - 9px);
+    width: 18px;
+    height: 10px;
+    /* inherit继承父元素的属性值 */
+    background-color: inherit;
+    /* 绘制三角形图案，polygon属性只需提供最少三个点，就可以将三点连线，绘制图案。
+    坐标位置（x，y）0 100% ，x轴上为0px，y轴上为100% */
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+
+.header .nav ul>li:first-child:hover~.underline{
+    opacity: 1;
+}
+
+.header .nav ul>li:nth-child(2):hover~.underline{
+    left: 240px;
+    background-color: #ff9933;
+    opacity: 1;
+}
+
+.header .nav ul>li:nth-child(3):hover~.underline{
+    left: 480px;
+    background-color: #339933;
+    opacity: 1;
+}
+
+.header .nav ul>li:nth-child(4):hover~.underline{
+    left: 720px;
+    background-color: #cc1495;
+    opacity: 1;
+}
+
+.header .nav ul>li:nth-child(5):hover~.underline{
+    left: 960px;
+    background-color: #5b3086;
+    opacity: 1;
+}
+
+
+
+
+/* 页面 */
+.page {
+    grid-area: page;
+    width: 100vw;
+    height: 660px;
+    padding-right: 20px;
+    /* 设置滚动条贴合方式，沿y轴滚动，mandatory强制滚动 */
+    scroll-snap-type: y mandatory;
+    /* 设置溢出时垂直保留滚动轴，水平隐藏 */
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.page1{
+    width: 100vw;
+    height: 660px;
+    overflow: hidden;
+    background-color: rgb(242, 168, 168);
+    background-size: cover;
+    background-image: url(../img/page1.png);
+    /* 设置下一页内容会滚动贴合到顶部 */
+    scroll-snap-align: start;
+}
+
+.box-main{
+    display: grid;
+    grid-template-columns: 220px 700px 400px;
+    grid-template-rows: 250px;
+    grid-row-gap: 10px;
+    margin-top: 30px;
+    margin-left: 100px;
+}
+
+
+/* 自我介绍头像部分 */
+.box{
+    display: block;
+    width: 220px;
+    height: 250px;
+    font-size: 20px;
+    margin-top: 25px;
+    text-align: center;
+    border-radius: 5%;
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.box::before{
+        content: '';
+        display: block;
+        width: 75px;
+        height: 75px;
+        margin: auto 40px;
+        border-radius: 50%;
+        transform: translate(40%,15%);
+        background-image: url(../img/ovo.jpg);
+        background-size: cover;
+        border: 5px solid rgb(225, 206, 206);
+}
+
+/* 自我介绍文字部分 */
+.introduce{
+    overflow: hidden;
+    margin-top: 25px;
+    margin-left: 10px;
+    float: left;
+    width: 700px;
+    height: 250px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, .3);
+}
+.introduce h2{
+    margin-left: 10px;
+}
+/* 自我介绍图片样式 */
+.chika{
+    float: right;
+    display: block;
+    margin-top: -210px;
+}
+.chika img{
+    width: 150px;
+    height: 251px;
+}
+
+/* 切图动画设置 */
+.main{
+    top: 25px;
+    margin-left: 25px;
+    position: relative;
+    width: 400px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.item{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* 切图时间 */
+    transition: all 0.5s;
+    background-size: cover;
+}
+/* 图片导入设置 */
+.item1{
+    background-image: url(../img/1.gif);
+}
+.item2{
+    background-image: url(../img/2.gif);
+    left: 100%;
+}
+.item3{
+    background-image: url(../img/3.gif);
+    left: 200%;
+}
+
+input{
+    position: relative;
+    z-index: 100;
+    display: none;
+}
+
+.select{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 10px;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* 按钮设置 */
+.select>label{
+    width: 10px;
+    height: 10px;
+    background-color: rgb(255,255,255);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1.5px solid white;
+}
+
+.main input:nth-of-type(1):checked ~ .select label:nth-of-type(1){
+    background-color: rgb(0, 0, 0);
+}
+.main input:nth-of-type(2):checked ~ .select label:nth-of-type(2){
+    background-color: rgb(0, 0, 0);
+}
+.main input:nth-of-type(3):checked ~ .select label:nth-of-type(3){
+    background-color: rgb(0, 0, 0);
+}
+/* 切图设置 */
+.main input:nth-of-type(1):checked ~ .item{
+    transform: translateX(0);
+}
+.main input:nth-of-type(2):checked ~ .item{
+    transform: translateX(-100%);
+}
+.main input:nth-of-type(3):checked ~ .item{
+    transform: translateX(-200%);
+}
+
+img{
+    width: 300px;
+    height: 200px;
+}
+h2{
+    margin-top: 10px;
+}
+
+/* 个人技能内容样式 */
+.skill{
+    margin-top: 30px;
+    display: grid;
+    margin-top: 75px;
+    margin-left: 130px;
+}
+.skillbox{
+    display: flex;
+}
+.gaine{
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+    perspective: 600px;
+}
+.img{
+    position: absolute;
+    transform-origin: right;
+    transform: rotateY(0deg);
+    opacity: 1;
+    transition: 0.5s;
+}
+.caption{
+    position: absolute;
+    z-index: 0;
+    background-color: #bfdecb;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    /* 元素的宽度和高度包含内边距和边框 */
+    box-sizing: border-box;
+    letter-spacing: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform-origin: left;
+    transform: rotateY(90deg);
+    opacity: 0;
+    transition: 0.5s;
+}
+.gaine:hover .img{
+    /* 悬停时图片消失 */
+    transform: rotateY(-90deg);
+    opacity: 0;
+}
+.gaine:hover .caption{
+    /* 悬停时文字显示 */
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+.caption h3{
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+.caption p{
+    font-size: 20px;
+}
+
+
+
+.page2{
+    width: 100vw;
+    height: 660px;
+    overflow: hidden;
+    background-color: rgb(238, 216, 129);
+    background-size: cover;
+    background-image: url(../img/page2.png);
+    display: flex;
+    flex-direction: column;
+    /* 设置下一页内容会滚动贴合到顶部 */
+    scroll-snap-align: start;
+}
+
+.page2 img{
+    width: 180px;
+    height: 280px;
+    z-index: 1;
+}
+
+.images1,.images2{
+    display: flex;
+}
+
+.page2 .img{
+    border: 5px solid #7371c1;
+    border-radius: 15px;
+    /* x偏移量 | y偏移量 | 阴影模糊半径 | 阴影颜色 */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+.page2 .img1{
+    transform: rotate(10deg);
+    margin-top: 20px;
+    margin-left: 140px;
+}
+.page2 .img1:hover{
+    /* 设置卡片旋转时间 */
+    transform: rotate(0deg);
+    transition: 0.1s;
+}
+
+.page2 .img2{
+    transform: rotate(-8deg);
+    margin-top: 30px;
+    margin-left: 460px;
+}
+.page2 .img2:hover{
+    transform: rotate(0deg);
+    transition: 0.1s;
+}
+
+.page2 .img3{
+    transform: rotate(12deg);
+    margin-top: 20px;
+    margin-left: 480px;
+}
+.page2 .img3:hover{
+    transform: rotate(0deg);
+    transition: 0.1s;
+}
+
+.page2 .img4{
+    transform: rotate(-10deg);
+    margin-left: 270px;
+    margin-top: 320px;
+}
+.page2 .img4:hover{
+    transform: rotate(0deg);
+    transition: 0.1s;
+}
+
+.page2 .img5{
+    transform: rotate(10deg);
+    margin-left: 470px;
+    margin-top: 300px;
+}
+.page2 .img5:hover{
+    transform: rotate(0deg);
+    transition: 0.1s;
+}
+
+.page2 .img6{
+    transform: rotate(-9deg);
+    margin-left: 410px;
+    margin-top: 324px;
+}
+.page2 .img6:hover{
+    transform: rotate(0deg);
+    transition: 0.1s;
+}
+
+
+
+.page3{
+    width: 100vw;
+    height: 660px;
+    overflow: hidden;
+    background-color: rgb(75, 103, 194);
+    background-size: cover;
+    background-image: url(../img/page3.png);
+    /* 设置下一页内容会滚动贴合到顶部 */
+    scroll-snap-align: start;
+}
+
+/* 第一排样式 */
+.page3 .relation1{
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    grid-template-rows: 160px;
+    grid-column-gap: 160px;
+    padding: 20px;
+    margin-left: 120px;
+}
+.page3 .img1{
+    border: 5px solid #7371c1;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    margin: auto 80px;
+}
+
+/* 第二排样式 */
+.page3 .relation2{
+    display: grid;
+    grid-template-columns: 250px 250px;
+    grid-template-rows: 160px;
+    grid-column-gap: 620px;
+    margin-top: 35px;
+    padding: 25px;
+}
+.page3 .relation2 .gif{
+    border: 5px solid #7371c1;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    margin-left: 200px;
+}
+.relation2 img{
+    width: 250px;
+    height: 160px;
+}
+
+/* 第三排样式 */
+.page3 .relation3{
+    display: grid;
+    grid-template-columns: 250px 700px;
+    grid-template-rows: 160px;
+    grid-column-gap: 235px;
+    padding: 25px;
+}
+.page3 .img2{
+    width: 300px;
+    height: 160px;
+    border: 5px solid #7371c1;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    margin-left: 190px;
+}
+.page3 .img3{
+    width: 700px;
+    height: 160px;
+    border: 5px solid #7371c1;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    margin-left: 135px;
+}
+
+/* 文字样式 */
+.page3 .email{
+    position: relative;
+    font-family: 'Segoe UI Black';
+    font-size: 35px;
+    z-index: 1;
+    margin-left: 5px;
+    margin-top: -314px;
+}
+
+.page3 .emailbule{
+    position: relative;
+    font-family: 'Segoe UI Black';
+    color: rgb(234, 113, 113);
+    font-size: 35px;
+    z-index: 0;
+    margin-left: 5px;
+    margin-top: -47px;
+}
+
+.page3 .name{
+    position: relative;
+    font-family: 'Segoe UI Black';
+    color: rgb(234, 113, 113);
+    font-size: 35px;
+    z-index: 0;
+    margin-top: 96px;
+    margin-left: -35px;
+}
+
+.page3 .qq{
+    position: relative;
+    font-family: 'Segoe UI Black';
+    color: rgb(234, 113, 113);
+    font-size: 35px;
+    z-index: 0;
+    margin-top: 96px;
+    margin-left: 496px;
+}
+
+.page3 .wechar{
+    position: relative;
+    font-family: 'Segoe UI Black';
+    color: rgb(234, 113, 113);
+    font-size: 35px;
+    z-index: 0;
+    margin-top: 96px;
+    margin-left: -445px;
+}
+
+/* 鼠标悬停样式 */
+.type1:hover .qq{
+    z-index: 2;
+}
+
+.type2:hover .name{
+    z-index: 2;
+}
+
+.type3:hover .wechar{
+    z-index: 2;
+}
+
+.type6:hover .emailbule{
+    z-index: 2;
+}
+  
+
+
+
+
+/* 页脚 */
+.footer { 
+    grid-area: footer; 
+    background-color: rgba(103, 147, 223, .9);
+    font-size: 4px;
+    color: #000;
+}
+
+.footer .Copyright{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+    /* 规定行间距 */
+    grid-row-gap: 4px;
+    /* 设置盒子居中 */
+    place-items: center center;
+    z-index: 99;
+}

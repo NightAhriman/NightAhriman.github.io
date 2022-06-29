@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: rgb(255, 255, 255);
+}
+
+.content{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    margin: 10px;
+}
+
+img{
+    width: 200px;
+    height: 250px;
+    margin-top: 10px;
+    border: 5px solid #0a9ad3;
+    overflow: hidden;
+}
+
+.img1:hover h3{
+    color: rgb(255, 10, 10);
+}
