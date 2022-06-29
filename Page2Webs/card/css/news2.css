@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(240, 236, 196);
+}
+
+.shell {
+    position: relative;
+    min-width: 1000px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /*设置3D变化*/
+    transform-style: preserve-3d;
+    /*添加透视效果*/
+    perspective: 900px;
+}
+
+.box {
+    position: relative;
+    width: 225px;
+    height: 489px;
+    transition: .3s;
+    overflow: hidden;
+    margin: 30px;
+    transform: rotateY(0);
+    transition-delay: .1s;
+    border-radius: 5px;
+    border: #fff 5px solid;
+    background-color: rgb(205, 225, 156);
+    margin-top: 75px;
+}
+
+img {
+    width: 100%;
+}
+
+.shell:hover .box {
+    transform: rotateY(20deg);
+}
+
+.shell .box:hover {
+    transform: rotateY(1deg) scale(1.25);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, .7);
+    z-index: 1;
+}
+
+.box:hover~.box {
+    transform: rotateY(-20deg);
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    width: 90%;
+    height: 100%;
+    z-index: 999;
+    padding: 15px;
+}
+
+ h2 {
+    color: rgb(255, 142, 3);
+    transition: .3s;
+    font-size: 20px;
+    transform: translateY(-100px);
+}
+
+ .box:hover h2 {
+    transform:   translateY(-15px);
+}
+
+p {
+    color: rgb(85, 8, 144);
+    transform: .3s;
+    font-size: 14px;
+    transform: translateY(600px);
+    background-color: rgb(205, 225, 156);
+}
+
+.box:hover p {
+    transform: translateY(220px);
+}
+

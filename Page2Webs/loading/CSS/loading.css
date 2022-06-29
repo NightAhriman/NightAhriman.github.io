@@ -1,0 +1,96 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+    background: linear-gradient(to top,rgb(203, 39, 181),rgb(111, 13, 111));
+    overflow: hidden;
+}
+
+.shell{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.yuu{
+    position: relative;
+    /* 执行动画 */
+    animation: flight 2.5s linear infinite;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 设置动画 */
+@keyframes flight {
+    0%{
+        transform: translate(2px,1px) rotate(0deg);
+    }
+    10%{
+        transform: translate(-1px,3px) rotate(-1deg);
+    }
+    20%{
+        transform: translate(-2px,0px) rotate(1deg);
+    }
+    30%{
+        transform: translate(1px,2px) rotate(0deg);
+    }
+    40%{
+        transform: translate(1px,-1px) rotate(1deg);
+    }
+    50%{
+        transform: translate(-1px,3px) rotate(-1deg);
+    }
+    60%{
+        transform: translate(-1px,1px) rotate(0deg);
+    }
+    70%{
+        transform: translate(3px,1px) rotate(-1deg);
+    }
+    80%{
+        transform: translate(-2px,-1px) rotate(1deg);
+    }
+    90%{
+        transform: translate(2px,1px) rotate(0deg);
+    }
+    100%{
+        transform: translate(1px,-2px) rotate(-1deg);
+    }
+}
+
+.text{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 65%;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 3px;
+    white-space: nowrap;
+    /* 执行文字移动动画        贝塞尔曲线 */
+    animation: textmove 2s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+}
+
+@keyframes textmove {
+    0%{
+        margin-left: 500px;
+        opacity: 0;
+    }
+    30%,70%{
+        margin-left: 0;
+        opacity: 1;
+    }
+    100%{
+        margin-left: -500px;
+        opacity: 0;
+    }
+}

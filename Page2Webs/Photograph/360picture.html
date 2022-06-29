@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D全景照片</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        .shell{
+            width: 100%;
+            height: 100vh;
+        }
+
+        .img{
+            width: 100%;
+            height: 100%;
+            background-image: url("img/img.jpg");
+            background-repeat:repeat-x;
+            background-position: 0 -300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <div class="img"></div>
+    </div>
+    <script>
+        const img = document.querySelector('.img')
+        // 当鼠标在图片上时获取鼠标位置
+        img.addEventListener('mouseenter',function(e){
+            this.x=e.clientX
+            this.y=e.clientY
+        })
+        img.addEventListener('mousemove',function(e){
+            // 当鼠标在图片上时再获取鼠标的x轴和y轴的位置，
+            // 然后减鼠标移动时的位置得到鼠标偏移的值
+            this._x=e.clientX
+            this._y=e.clientY
+            const disx = this._x-this.x
+            const disy = this._y-this.y
+            // 使鼠标在x轴偏移的反响更大
+            const movex = disx*2
+             // 使鼠标在y轴偏移的反响更小
+            const movey = -600+disy/0.8
+            img.style.backgroundPosition=`${movex}px ${movey}px`
+        })
+    </script>
+</body>
+</html>
