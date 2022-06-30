@@ -1,0 +1,262 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    overflow-x: hidden;
+    /* 背景动画设置 */
+    background-image: linear-gradient(125deg,#a18cd1,#fbc2eb,#fad0c4,#ff9a9e,#ff9a9e,#ffd1ff);
+    background-size: 400%;
+    animation: bganimation 15s infinite;
+}
+
+@keyframes bganimation{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
+
+/* 头部导航栏设置 */
+.logo img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    margin-top: -20px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 60px;
+    background-color: rgb(103, 147, 223);
+    /* 阴影 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+    z-index: 99;
+}
+
+.header .nav {
+    width: 100%;
+    height: 100%;
+    /* 元素水平居中 */
+    margin: 0 auto;
+}
+
+.header li {
+    /* 清除li元素前面的项目符号 */
+    list-style: none;
+}
+
+.header a {
+    text-decoration: none;
+    color: #000;
+}
+
+.header .nav ul {
+    position: relative;
+    /* 弹性布局 */
+    display: flex;
+    /* 子元素平均分配宽度 */
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.header .nav ul>li {
+    width: 100%;
+    height: 100%;
+}
+
+.header .nav ul>li>a {
+    /* a元素由行内元素转变为块元素 */
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+}
+
+.header .nav ul>li ol {
+    width: 100%;
+    background-color: rgba(103, 147, 223, .9);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
+    /* 隐藏二级菜单 */
+    transform: scaleY(0);
+    /* 设置过渡动画 */
+    transition: all .2s;
+    transform-origin: 50% 0%;
+}
+
+.header .nav ul>li ol li {
+    height: 50px;
+    border-bottom: 2px solid rgb(82, 115, 171);
+}
+
+.header .nav ul>li ol li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+}
+
+.header .nav ul>li ol li:hover {
+    background-color: rgba(211, 182, 182, .3);
+}
+
+.header .nav ul>li:hover ol {
+    transform: scaleY(1);
+}
+
+
+
+
+
+/* 页面 */
+.magin{
+    display: flex;
+    justify-content: center;
+    height: 950px;
+}
+
+.page {
+    display: grid;
+    grid-template-columns: 750px 800px;
+    grid-template-rows: 300px 500px;
+    gap: 5px 5px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "intro photo"
+      "foods photo";
+      margin: auto;
+}
+  
+.intro { 
+    grid-area: intro; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 20px;
+    border: 5px solid #0a9ad3;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+  
+.photo { 
+    grid-area: photo;
+    display: flex;
+    flex-direction: row;
+    background-color: #0a9ad3;
+    border: 5px solid #0a9ad3;
+}
+
+.photo .img{ 
+    width: 50px;
+    height: 795px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.photo .img img{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #0a9ad3;
+    /* 对图片进行剪切，保留原始比例 */
+    object-fit: cover;
+    object-position: 50% 20%;
+}
+
+.img:nth-child(5){
+    width: 600px;
+}
+
+/* 鼠标移入图片展开 */
+.img:hover{
+    width: 600px;
+}
+
+.img:hover ~ .img:nth-child(5){
+    width: 50px;
+}
+  
+.foods { 
+    grid-area: foods; 
+    overflow: hidden;
+    border-top-right-radius: 15px;
+}
+
+.foods table{
+    width: 100%;
+    height: 100%;
+    border: 5px solid #0a9ad3;
+    background: rgba(255, 255, 255, 0.7);
+    border-top-right-radius: 15px;
+}
+
+.foods p{
+    font-size: 20px;
+    text-align: center;
+}
+.foods h3{
+    font-size: 20px;
+    text-align: center;
+}
+
+.foods tr:nth-child(1) td{
+    background: linear-gradient(to top, rgb(144, 160, 218), rgb(97, 106, 203));
+}
+
+.foods a{
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+}
+
+.foods a:hover{
+    color: #e70d0d;
+}
+
+.foods tr:nth-child(1) td:nth-child(6){
+    border-top-right-radius: 15px;
+}
+
+.foods iframe{
+    width: 100%;
+    height: 100%;
+}
+  
+
+
+
+
+/* 页脚 */
+.footer { 
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 50px;
+    background-color: rgb(103, 147, 223);
+    font-size: 4px;
+    color: #000;
+}
+
+.footer .Copyright{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+    /* 规定行间距 */
+    grid-row-gap: 4px;
+    /* 设置盒子居中 */
+    place-items: center center;
+    z-index: 99;
+}
