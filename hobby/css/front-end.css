@@ -1,0 +1,198 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    overflow-x: hidden;
+    /* 背景动画设置 */
+    background-image: linear-gradient(125deg,#a18cd1,#fbc2eb,#fad0c4,#ff9a9e,#ff9a9e,#ffd1ff);
+    background-size: 400%;
+    animation: bganimation 15s infinite;
+}
+
+@keyframes bganimation{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
+
+/* 头部导航栏设置 */
+.logo img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    margin-top: -20px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 60px;
+    background-color: rgb(103, 147, 223);
+    /* 阴影 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+    z-index: 99;
+}
+
+.header .nav {
+    width: 100%;
+    height: 100%;
+    /* 元素水平居中 */
+    margin: 0 auto;
+}
+
+.header li {
+    /* 清除li元素前面的项目符号 */
+    list-style: none;
+}
+
+.header a {
+    text-decoration: none;
+    color: #000;
+}
+
+.header .nav ul {
+    position: relative;
+    /* 弹性布局 */
+    display: flex;
+    /* 子元素平均分配宽度 */
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.header .nav ul>li {
+    width: 100%;
+    height: 100%;
+}
+
+.header .nav ul>li>a {
+    /* a元素由行内元素转变为块元素 */
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+}
+
+.header .nav ul>li ol {
+    width: 100%;
+    background-color: rgba(103, 147, 223, .9);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
+    /* 隐藏二级菜单 */
+    transform: scaleY(0);
+    /* 设置过渡动画 */
+    transition: all .2s;
+    transform-origin: 50% 0%;
+}
+
+.header .nav ul>li ol li {
+    height: 50px;
+    border-bottom: 2px solid rgb(82, 115, 171);
+}
+
+.header .nav ul>li ol li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+}
+
+.header .nav ul>li ol li:hover {
+    background-color: rgba(211, 182, 182, .3);
+}
+
+.header .nav ul>li:hover ol {
+    transform: scaleY(1);
+}
+
+
+
+
+/* 页面 */
+.page {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 950px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page .magin {
+    width: 1500px;
+    height: 700px;
+}
+
+.page .content1{
+    display: grid;
+    grid-template-columns: 600px 900px;
+    grid-template-rows: 350px;
+    margin-top: 25px;
+    border-radius: 10px;
+    background-color: rgba(224, 221, 221, 0.5);
+    overflow: hidden;
+}
+.page img{
+    height: 350px;
+}
+.page .text{
+    margin: auto 10px;
+}
+.page p{
+    font-size: 20px;
+}
+
+.page .content2{
+    display: grid;
+    grid-template-columns: 775px 725px;
+    grid-template-rows: 350px;
+    margin-top: 25px;
+    border-radius: 10px;
+    background-color: rgba(224, 221, 221, 0.5);
+    overflow: hidden;
+}
+.page .content2 .text{
+    margin: auto 10px;
+}
+.page .content2 p{
+    font-size: 20px;
+}
+.page .content2 .web2{
+   width: 725px;
+}
+
+
+
+
+/* 页脚 */
+.footer { 
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 50px;
+    background-color: rgb(103, 147, 223);
+    font-size: 4px;
+    color: #000;
+}
+
+.footer .Copyright{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+    /* 规定行间距 */
+    grid-row-gap: 4px;
+    /* 设置盒子居中 */
+    place-items: center center;
+    z-index: 99;
+}
