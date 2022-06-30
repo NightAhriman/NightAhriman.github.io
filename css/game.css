@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --color1:#01579b;
+    --color2:#00838f;
+    --color3:#ffd600;
+    --color4:#ff4081;
+    --color5:#f44336;
+    --color6:#92aec4;
+    --color7:#38b5c0;
+    --color8:#7177ca;
+    --color9:#108bc4;
+    --color10:#25a4b4;
+}
+
+body{
+    overflow-x: hidden;
+    /* 背景动画设置 */
+    background-image: linear-gradient(125deg,#a18cd1,#fbc2eb,#fad0c4,#ff9a9e,#ff9a9e,#ffd1ff);
+    background-size: 400%;
+    animation: bganimation 15s infinite;
+}
+
+@keyframes bganimation{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
+
+/* 头部导航栏设置 */
+.logo img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    margin-top: -20px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 60px;
+    background-color: rgb(103, 147, 223);
+    /* 阴影 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+    z-index: 99;
+}
+
+.header .nav {
+    width: 100%;
+    height: 100%;
+    /* 元素水平居中 */
+    margin: 0 auto;
+}
+
+.header li {
+    /* 清除li元素前面的项目符号 */
+    list-style: none;
+}
+
+.header a {
+    text-decoration: none;
+    color: #000;
+}
+
+.header .nav ul {
+    position: relative;
+    /* 弹性布局 */
+    display: flex;
+    /* 子元素平均分配宽度 */
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.header .nav ul>li {
+    width: 100%;
+    height: 100%;
+}
+
+.header .nav ul>li>a {
+    /* a元素由行内元素转变为块元素 */
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+}
+
+.header .nav ul>li ol {
+    width: 100%;
+    background-color: rgba(103, 147, 223, .9);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
+    /* 隐藏二级菜单 */
+    transform: scaleY(0);
+    /* 设置过渡动画 */
+    transition: all .2s;
+    transform-origin: 50% 0%;
+}
+
+.header .nav ul>li ol li {
+    height: 50px;
+    border-bottom: 2px solid rgb(82, 115, 171);
+}
+
+.header .nav ul>li ol li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-align: center;
+}
+
+.header .nav ul>li ol li:hover {
+    background-color: rgba(211, 182, 182, .3);
+}
+
+.header .nav ul>li:hover ol {
+    transform: scaleY(1);
+}
+
+
+
+
+
+/* 页面 */
+.page {
+    width: 100vw;
+    height: 950px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page .magin {
+    width: 1600px;
+    height: 700px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .3);
+}
+
+
+.page .img {
+    width: 180px;
+    height: 280px;
+    margin-left: 30px;
+    border: 5px solid #7371c1;
+    border-radius: 15px;
+    /* x偏移量 | y偏移量 | 阴影模糊半径 | 阴影颜色 */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+.page .images1,.images2{
+    width: 1580px;
+    height: 330px;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 526px 526px 526px;
+    grid-template-rows: auto;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.page .game{
+    display: flex;
+}
+.page .picture{
+    height: 200px;
+    margin-left: -50px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+.page h1{
+    font-size: 60px;
+}
+
+.page .font{
+    color: #fff;
+    margin-left: 110px;
+    text-transform: uppercase;
+    word-spacing: 100vw;
+    text-align: center;
+    background: linear-gradient(225deg,
+        var(--color6) 0%, var(--color6) 9%,
+        transparent 9%, transparent 10%,
+        var(--color7) 10%, var(--color7) 19%,
+        transparent 19%, transparent 20%,
+        var(--color8) 20%, var(--color8) 29%,
+        transparent 29%, transparent 30%,
+        var(--color9) 30%, var(--color9) 39%,
+        transparent 39%, transparent 40%,
+        var(--color10) 40%, var(--color10) 49%,
+        transparent 49%, transparent 50%,
+        var(--color6) 50%, var(--color6) 59%,
+        transparent 59%, transparent 60%,
+        var(--color7) 60%, var(--color7) 69%,
+        transparent 69%, transparent 70%,
+        var(--color8) 70%, var(--color8) 79%,
+        transparent 79%, transparent 80%,
+        var(--color9) 80%, var(--color9) 89%,
+        transparent 89%, transparent 90%,
+        var(--color10) 90%, var(--color10) 99%,
+        transparent 99%
+    );
+    background-size: 200% 200%;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: move 4s linear infinite; 
+}
+
+ @keyframes move{
+    0%{
+        background-position: 0px 100%;
+    }
+    100%{
+        background-position: 100% 0px;
+    }
+} 
+
+
+
+
+/* 页脚 */
+.footer { 
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 50px;
+    background-color: rgb(103, 147, 223);
+    font-size: 4px;
+    color: #000;
+}
+
+.footer .Copyright{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+    /* 规定行间距 */
+    grid-row-gap: 4px;
+    /* 设置盒子居中 */
+    place-items: center center;
+    z-index: 99;
+}

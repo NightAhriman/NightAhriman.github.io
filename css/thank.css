@@ -1,0 +1,150 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+/*背景 */
+section{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    animation: bgcolor 6s linear infinite;
+}
+/* 设置背景动画 */
+@keyframes bgcolor{
+    0%{
+        background: rgb(195, 119, 227);
+    }
+    25%{
+        background: rgb(207, 84, 197);
+    }
+    50%{
+        background: rgb(192, 66, 169);
+    }
+    75%{
+        background: rgb(207, 84, 197);
+    }
+    100%{
+        background: rgb(195, 119, 227);
+    }
+}
+.bgpulse{
+    width: 100%;
+    height: 100%;
+}
+/* 设置方块样式 */
+.bgpulse span{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #fff;
+}
+.bgpulse span:nth-child(3n+1){
+    background: transparent;
+    border: 5px solid #fff;
+}
+/* 设置方块位置 */
+.bgpulse span:nth-child(1){
+    top: 50%;
+    left: 20%;
+    animation: animate 8s linear infinite;
+}
+.bgpulse span:nth-child(2){
+    top: 80%;
+    left: 40%;
+    animation: animate 10s linear infinite;
+}
+.bgpulse span:nth-child(3){
+    top: 10%;
+    left: 65%;
+    animation: animate 13s linear infinite;
+}
+.bgpulse span:nth-child(4){
+    top: 50%;
+    left: 70%;
+    animation: animate 5s linear infinite;
+}
+.bgpulse span:nth-child(5){
+    top: 10%;
+    left: 30%;
+    animation: animate 7s linear infinite;
+}
+.bgpulse span:nth-child(6){
+    top: 90%;
+    left: 95%;
+    animation: animate 6s linear infinite;
+}
+.bgpulse span:nth-child(7){
+    top: 80%;
+    left: 5%;
+    animation: animate 3s linear infinite;
+}
+.bgpulse span:nth-child(8){
+    top: 35%;
+    left: 50%;
+    animation: animate 12s linear infinite;
+}
+.bgpulse span:nth-child(9){
+    top: 5%;
+    left: 5%;
+    animation: animate 9s linear infinite;
+}
+.bgpulse span:nth-child(10){
+    top: 25%;
+    left: 90%;
+    animation: animate 8s linear infinite;
+}
+/* 设置方块动画 */
+@keyframes animate{
+    0%{
+        transform: scale(0) translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1) translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+
+.shell{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+
+/* 文字样式 */
+.text{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+.back{
+    position: absolute;
+    left: 50%;
+    margin-top: 120px;
+    transform: translateX(-50%);
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+a:hover{
+    color: rgb(255, 255, 255);
+}
